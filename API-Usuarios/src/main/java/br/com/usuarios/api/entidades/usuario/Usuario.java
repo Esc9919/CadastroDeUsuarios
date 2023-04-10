@@ -31,7 +31,7 @@ public class Usuario {
     private Boolean ativo;
 
 
-    public Usuario(DadosCadastroUsuarios dados) {
+    public Usuario(DadosCadastroUsuario dados) {
         this.nome = dados.nome();
         this.dataNascimento = dados.dataNascimento();
         this.cpf = dados.cpf();
@@ -63,5 +63,9 @@ public class Usuario {
 
     public void desativar() {
         this.ativo = false;
+    }
+
+    public void reativar() {
+        this.ativo = true;
     }
 }

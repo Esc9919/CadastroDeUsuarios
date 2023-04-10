@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
 
-public record DadosCadastroUsuarios(
+public record DadosCadastroUsuario(
         @NotBlank
         String nome,
 
