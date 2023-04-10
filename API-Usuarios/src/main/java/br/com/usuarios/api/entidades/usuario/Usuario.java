@@ -42,4 +42,22 @@ public class Usuario {
         this.categoria = dados.categoria();
         this.ativo = true;
     }
+
+    public void atualizarInformacoes(DadosAtualizacaoUsuario dados) {
+        if (dados.telefone() != null){
+            this.telefone = dados.telefone();
+        }
+
+        if (dados.userName() != null){
+            this.userName = dados.userName();
+        }
+
+        if (dados.senha() != null){
+            this.senha = dados.senha();
+        }
+
+        if (dados.email() != null){
+            this.email = dados.email();
+        }
+    }
 }
