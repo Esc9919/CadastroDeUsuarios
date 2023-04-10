@@ -60,4 +60,8 @@ public class Usuario {
             this.email = dados.email();
         }
     }
+
+    public void desativar() {
+        this.ativo = false;
+    }
 }

@@ -23,12 +23,9 @@ public class UsuariosController {
     @PostMapping
     @Transactional
     public ResponseEntity inserir(@RequestBody @Valid DadosCadastroUsuarios dados, UriComponentsBuilder uriBuilder){
-
         Usuario usuario = new Usuario(dados);
         repository.save(usuario);
-
         URI uri = uriBuilder.path("/usuarios{id}").buildAndExpand(usuario.getId()).toUri();
-
         return ResponseEntity.created(uri).body(new DadosDetalhamentoUsuario(usuario));
     }
 
@@ -41,7 +38,6 @@ public class UsuariosController {
     @GetMapping("/{id}")
     public ResponseEntity detalhar(@PathVariable Long id){
         Usuario usuario = repository.getReferenceById(id);
-
         return ResponseEntity.ok(new DadosListagemUsuario(usuario));
     }
 
@@ -50,8 +46,14 @@ public class UsuariosController {
     public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoUsuario dados){
         Usuario usuario = repository.getReferenceById(dados.id());
         usuario.atualizarInformacoes(dados);
-
-
         return ResponseEntity.ok(new DadosDetalhamentoUsuario(usuario));
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity dasativar(@PathVariable Long id){
+        Usuario usuario = repository.getReferenceById(id);
+        usuario.desativar();
+        return ResponseEntity.noContent().build();
     }
 }
